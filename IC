@@ -1,0 +1,391 @@
+---
+title: "Intervalos de confianza"
+author: "Ahtziri Guadarrama"
+date: "2023-05-19"
+output: pdf_document
+  pdf_document: default
+  header-includes:
+  - \usepackage[spanish]{babel}
+  - \usepackage{multicol}
+  - \usepackage{titlesec}
+  - \usepackage{fancyhdr}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Intervalos de confianza para una media
+
+## Para una media
+
+### Muestras grandes
+
+1.  Intervalo de confianza del 95 para la altura media poblacional de los estudiantes de una universidad con una muestra de 100 estudiantes
+
+El ejercicio arroja los siguientes datos
+
+```{r}
+tamaño <- 100
+media <- 170
+deviacionest <- 8
+nivelconf <- 95
+z <- 1.96
+```
+
+para desarrollar los ejercicios utilizamos las formulas y sustituimos los valores como se muestra a continuación
+
+xbarra+z*(desvest/sqrt/(n)) xbarra-z*(desvest/sqrt/(n))
+
+```{r}
+xbarra <- 170
+n <- 100
+desvest <- 8
+z <- 1.96
+
+mu1 <- xbarra-z*(desvest/sqrt(n))
+mu2 <- xbarra+z*(desvest/sqrt(n))
+
+intervalo<-paste0("mu ∈ ","(",round(mu1,2),",",round(mu2,2),")","cm")
+print(intervalo)
+```
+
+2.  Intervalo de confianza del 90 % para la temperatura media poblacional de un horno con una muestra de 50 mediciones
+
+Igual que el ejercicio anterior el problema nos arroja los datos que vamos a sustituiur como
+
+```{r}
+n <- 50
+xbarra <- 400
+desvest <- 10
+z <- 1.64
+
+mu1<-xbarra-z*(desvest/sqrt(n))
+
+mu2<-(xbarra+z*desvest/sqrt(n))
+
+intervalo<-paste0("mu ∈ ","(",round(mu1,2),",",round(mu2,2),")","°C")
+print(intervalo)
+```
+
+3.  Intervalo de confianza del 95 para la media de las alturas de una población de 2000 estudiantes universitarios
+
+```{r}
+n <- 2000
+xbarra <- 170
+desvest <- 10
+z <- 1.96
+
+mu1<-xbarra-z*(desvest/sqrt(n))
+
+mu2<-(xbarra+z*desvest/sqrt(n))
+
+intervalo<-paste0("mu ∈ ","(",round(mu1,2),",",round(mu2,2),")","cm")
+print(intervalo)
+```
+
+4.  Intervalo de confianza del 99 % para la media del diámetro de un conjunto de 50 tornillos:
+
+```{r}
+n <- 50
+xbarra <- 3.5
+desvest <- 0.2
+z <- 2.57
+
+mu1<-xbarra-z*(desvest/sqrt(n))
+
+mu2<-(xbarra+z*desvest/sqrt(n))
+
+intervalo<-paste0("mu ∈ ","(",round(mu1,2),",",round(mu2,2),")","mm")
+print(intervalo)
+```
+
+5.  Intervalo de confianza del 90 para la media del peso de una población de 50000 manzanas:
+
+```{r}
+n <- 50000
+xbarra <- 150
+desvest <- 20
+z <- 1.64
+
+mu1<-xbarra-z*(desvest/sqrt(n))
+
+mu2<-(xbarra+z*desvest/sqrt(n))
+
+intervalo<-paste0("mu ∈ ","(",round(mu1,2),",",round(mu2,2),")","g")
+print(intervalo)
+```
+
+6.  Intervalo de confianza del 95 para la media del tiempo de reacción de un grupo de 100 conductores:
+
+```{r}
+n <- 100
+xbarra <- 0.5
+desvest <- 0.1
+z <- 1.96
+
+mu1<-xbarra-z*(desvest/sqrt(n))
+
+mu2<-(xbarra+z*desvest/sqrt(n))
+
+intervalo<-paste0("mu ∈ ","(",round(mu1,2),",",round(mu2,2),")","s")
+print(intervalo)
+```
+
+7.Intervalo de confianza del 99 % para la media de las concentraciones de cloro en una muestra de agua:
+
+```{r}
+n <- 1
+xbarra <- 2 
+desvest <- 0.3
+z <- 2.57
+
+mu1<-xbarra-z*(desvest/sqrt(n))
+
+mu2<-(xbarra+z*desvest/sqrt(n))
+
+intervalo<-paste0("mu ∈ ","(",round(mu1,2),",",round(mu2,2),")","ppm")
+print(intervalo)
+```
+
+8.Intervalo de confianza del 90 para la media de las velocidades de una muestra de 50 coches en una autopista:
+
+```{r}
+n <- 50
+xbarra <- 120 
+desvest <- 5
+z <- 1.64
+
+mu1<-xbarra-z*(desvest/sqrt(n))
+
+mu2<-(xbarra+z*desvest/sqrt(n))
+
+intervalo<-paste0("mu ∈ ","(",round(mu1,2),",",round(mu2,2),")","km/h")
+print(intervalo)
+```
+
+9.  Intervalo de confianza del 99 % para la media del diámetro de una muestra de 15 pernos:
+
+```{r}
+n <- 15
+xbarra <- 5.5 
+desvest <- 0.3
+z <- 2.57
+
+mu1<-xbarra-z*(desvest/sqrt(n))
+
+mu2<-(xbarra+z*desvest/sqrt(n))
+
+intervalo<-paste0("mu ∈ ","(",round(mu1,2),",",round(mu2,2),")","km/h")
+print(intervalo)
+```
+
+10. Intervalo de confianza del 95 % para la media de las concentraciones de ácido sulfúrico en una muestra de 25 soluciones:
+
+```{r}
+n <- 25
+xbarra <- 3.2
+desvest <- 0.4
+z <- 1.96
+
+mu1<-xbarra-z*(desvest/sqrt(n))
+
+mu2<-(xbarra+z*desvest/sqrt(n))
+
+intervalo<-paste0("mu ∈ ","(",round(mu1,2),",",round(mu2,2),")","M")
+print(intervalo)
+```
+
+11. Intervalo de confianza del 90 % para la media de las resistencias eléctricas en una muestra de 20 circuitos:
+
+```{r}
+n <- 20
+xbarra <- 150
+desvest <- 20
+z <- 1.64
+
+mu1<-xbarra-z*(desvest/sqrt(n))
+
+mu2<-(xbarra+z*desvest/sqrt(n))
+
+intervalo<-paste0("mu ∈ ","(",round(mu1,2),",",round(mu2,2),")","ohms")
+print(intervalo)
+```
+
+12. Intervalo de confianza del 95 % para la media de las alturas de una muestra de 30 estudiantes de una universidad:
+
+```{r}
+n <- 30
+xbarra <- 170
+desvest <- 6 
+z <- 1.96
+
+mu1<-xbarra-z*(desvest/sqrt(n))
+
+mu2<-(xbarra+z*desvest/sqrt(n))
+
+intervalo<-paste0("mu ∈ ","(",round(mu1,2),",",round(mu2,2),")","cm")
+print(intervalo)
+```
+
+13. Intervalo de confianza del 95 % para la media de las alturas de una población de 2000 estudiantes universitarios:
+
+```{r}
+n <- 2000
+xbarra <- 170
+desvest <- 10
+z <- 1.96
+
+mu1<-xbarra-z*(desvest/sqrt(n))
+
+mu2<-(xbarra+z*desvest/sqrt(n))
+
+intervalo<-paste0("mu ∈ ","(",round(mu1,2),",",round(mu2,2),")","cm")
+print(intervalo)
+```
+
+14. Intervalo de confianza del 99 % para la media del diámetro de un conjunto de 50 tornillos:
+
+```{r}
+n <- 50
+xbarra <- 3.5 
+desvest <- 0.2
+z <- 2.57
+
+mu1<-xbarra-z*(desvest/sqrt(n))
+
+mu2<-(xbarra+z*desvest/sqrt(n))
+
+intervalo<-paste0("mu ∈ ","(",round(mu1,2),",",round(mu2,2),")","ohms")
+print(intervalo)
+```
+
+15. Intervalo de confianza del 90 % para la media del peso de una población de 50000 manzanas:
+
+```{r}
+n <- 50000
+xbarra <- 150
+desvest <- 20
+z <- 1.64
+
+mu1<-xbarra-z*(desvest/sqrt(n))
+
+mu2<-(xbarra+z*desvest/sqrt(n))
+
+intervalo<-paste0("mu ∈ ","(",round(mu1,2),",",round(mu2,2),")","g")
+print(intervalo)
+```
+
+16. Intervalo de confianza del 95 % para la media del tiempo de reacción de un grupo de 100 conductores:
+
+```{r}
+n <- 100
+xbarra <- 150  
+desvest <- 0.1
+z <- 1.96
+
+mu1<-xbarra-z*(desvest/sqrt(n))
+
+mu2<-(xbarra+z*desvest/sqrt(n))
+
+intervalo<-paste0("mu ∈ ","(",round(mu1,2),",",round(mu2,2),")","s")
+print(intervalo)
+```
+
+17. Intervalo de confianza del 99 % para la media de las concentraciones de cloro en una muestra de agua:
+
+```{r}
+n <- 75
+xbarra <- 2.0 
+desvest <- 0.3
+z <- 
+
+mu1<-xbarra-z*(desvest/sqrt(n))
+
+mu2<-(xbarra+z*desvest/sqrt(n))
+
+intervalo<-paste0("mu ∈ ","(",round(mu1,2),",",round(mu2,2),")","ppm")
+print(intervalo)
+```
+
+18. Intervalo de confianza del 90 % para la media de las velocidades de una muestra de 50 coches en una autopista:
+
+```{r}
+n <- 50
+xbarra <- 120 
+desvest <- 5
+z <- 1.64
+
+mu1<-xbarra-z*(desvest/sqrt(n))
+
+mu2<-(xbarra+z*desvest/sqrt(n))
+
+intervalo<-paste0("mu ∈ ","(",round(mu1,2),",",round(mu2,2),")","km/h")
+print(intervalo)
+```
+
+19. Intervalo de confianza del 99 % para la media del diámetro de una muestra de 15 pernos:
+
+```{r}
+n <- 15
+xbarra <- 5.5
+desvest <- 0.3
+z <- 2.57
+
+mu1<-xbarra-z*(desvest/sqrt(n))
+
+mu2<-(xbarra+z*desvest/sqrt(n))
+
+intervalo<-paste0("mu ∈ ","(",round(mu1,2),",",round(mu2,2),")","mm")
+print(intervalo)
+```
+
+20. Intervalo de confianza del 95 % para la media de las concentraciones de ácido sulfúrico en una muestra de 25 soluciones:
+
+```{r}
+n <- 25
+xbarra <- 3.2  
+desvest <- 0.4
+z <- 1.96
+
+mu1<-xbarra-z*(desvest/sqrt(n))
+
+mu2<-(xbarra+z*desvest/sqrt(n))
+
+intervalo<-paste0("mu ∈ ","(",round(mu1,2),",",round(mu2,2),")","M")
+print(intervalo)
+```
+
+21. Intervalo de confianza del 90 % para la media de las resistencias eléctricas en una muestra de 20 circuitos:
+
+```{r}
+n <- 20
+xbarra <- 150 
+desvest <- 20
+z <- 1.64
+
+mu1<-xbarra-z*(desvest/sqrt(n))
+
+mu2<-(xbarra+z*desvest/sqrt(n))
+
+intervalo<-paste0("mu ∈ ","(",round(mu1,2),",",round(mu2,2),")","ohms")
+print(intervalo)
+```
+
+22. Intervalo de confianza del 95 % para la media de las alturas de una muestra de 30 estudiantes de una universidad:
+
+```{r}
+n <- 30
+xbarra <-  
+desvest <- 6
+z <- 1.96
+
+mu1<-xbarra-z*(desvest/sqrt(n))
+
+mu2<-(xbarra+z*desvest/sqrt(n))
+
+intervalo<-paste0("mu ∈ ","(",round(mu1,2),",",round(mu2,2),")","cm")
+print(intervalo)
+```
+
+## 
